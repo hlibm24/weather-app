@@ -1,12 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import { useEffect, useRef, useState } from 'react';
+import CurrentWeather from './components/CurrentWeather';
 // import './App.css'
 
 function App() {
 
-  
   const [city, setCity] = useState('');
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
@@ -57,6 +54,8 @@ function App() {
       handleApiErrors(response);
       const data = await response.json();
       setCurrentWeather(data);
+      console.log(data);
+
     } catch(error) {
       setError(error.message);
     }
@@ -77,7 +76,7 @@ function App() {
       handleApiErrors(response);
       const data = await response.json();
       setForecast(data);
-      console.log(data)
+      console.log(data);
 
     } catch(error) {
       setError(error.message);
@@ -109,7 +108,7 @@ function App() {
           </ul>
         </aside>
         <main className='weather-card'>
-          
+          {currentWeather && <CurrentWeather data={currentWeather}/>}
         </main>
       </div>  
 
