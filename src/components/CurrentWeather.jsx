@@ -7,11 +7,12 @@ function CurrentWeather({data}) {
     return (
         <div className="currentWeather" >
             <div className="main-info">
+                <p>{data.name}</p>
                 <img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
                  alt={data.weather[0].description} />
+                <p>{data.weather[0].description}</p>
                 <p>Temperature: {Math.round(data.main.temp)} °C</p>
                 <p>Feels like: {Math.round(data.main.feels_like)} °C</p>
-                <p>{data.weather[0].description}</p>
             </div>
             <div className="addit-info">
                 <p>Humidity: {data.main.humidity}%</p>

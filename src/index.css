@@ -17,7 +17,6 @@
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -30,7 +29,7 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
     --text-h: #f3f4f6;
@@ -48,10 +47,11 @@
   #social .button-icon {
     filter: invert(1) brightness(2);
   }
-}
+} */
 
-body {
+html, body, #root {
   margin: 0;
+  padding: 0;
 }
 
 #root {
@@ -106,4 +106,8 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+.app-container {
+  min-height: 100vh;
 }
