@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import CurrentWeather from './components/CurrentWeather';
+import Forecast from './components/Forecast';
 // import './App.css'
 
 function App() {
