@@ -143,6 +143,8 @@ function App() {
         </aside>
         <main className='weather-card'>
           {currentWeather && <CurrentWeather data={currentWeather}/>}
+
+          {forecast && <Forecast data={forecast}/>}
         </main>
       </div>  
 

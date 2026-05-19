@@ -1,4 +1,17 @@
 function Forecast ({data}) {
+
+    const groupByDays = (forecastData) => {
+        const days = {};
+        forecastDate.list.forEach(item => {
+            const date = item.dt_txt.split(' ')[0];
+            if(!days[date]) {
+                days[date] = [];
+            }
+            days[date].push(item);
+        })
+        return days;
+    }
+
     if(!data) return null;
 
     return (
