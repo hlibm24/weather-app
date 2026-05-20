@@ -111,3 +111,7 @@ code {
 .app-container {
   min-height: 100vh;
 }
+
+.forecast-item {
+  display: inline-block;
+}
