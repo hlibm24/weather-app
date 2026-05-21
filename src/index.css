@@ -114,4 +114,5 @@ code {
 
 .forecast-item {
   display: inline-block;
+  margin-right: 25px;
 }

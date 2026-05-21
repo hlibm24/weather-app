@@ -19,24 +19,34 @@ function Forecast ({data}) {
     const forecastList = daysArray.map(day => {
         let minTemp = Infinity;
         let maxTemp = -Infinity;
-        let icon = '';
+        let middayForecast = null;
 
         day.forEach(forecast => {
             const temp = forecast.main.temp;
             if(temp < minTemp) minTemp = temp;
             if(temp > maxTemp) maxTemp = temp;
-            if(forecast.dt_txt.includes('12:00:00')) icon = forecast.weather[0].icon;
+            if(forecast.dt_txt.includes('12:00:00')) {
+                middayForecast = forecast;
+            };
         });
 
-        if(!icon) icon = day[0].weather[0].icon;
-
+        let details = middayForecast || day[0];
+        
         return {
             date: day[0].dt_txt.split(' ')[0],
             minTemp: Math.round(minTemp),
             maxTemp: Math.round(maxTemp),
-            icon: icon,
+            icon: details.weather[0].icon,
+            temp: Math.round(details.main.temp),
+            feels_like: Math.round(details.main.feels_like),
+            description: details.weather[0].description,
+            humidity: details.main.humidity,
+            wind: details.wind.speed.toFixed(1),
+            pressure: details.main.pressure,
+            visibility: (details.visibility / 1000).toFixed(1),
         };
     })
+    
 
     return (
         <div className="forecast-section">
