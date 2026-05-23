@@ -1,4 +1,6 @@
-function Forecast ({data}) {
+import {useState} from 'react';
+
+function Forecast ({data, showDetails, setShowDetails, getWeatherBackground}) {
     if(!data) return null;
 
     const groupByDays = (forecastData) => {
@@ -60,7 +62,35 @@ function Forecast ({data}) {
                     </li>
                 ))}    
             </ul>
-            <button className="details-btn">Details</button>
+            <button className="details-btn"
+            onClick={() => setShowDetails(true)}>Details</button>
+
+            {showDetails && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <button className="close-details"
+                        onClick={() => setShowDetails(false)}>X</button>
+                        
+                        {forecastList.map(day => (
+                            <div className='detail-card'
+                            key={day.date}
+                            style={{background: getWeatherBackground(day?.description)}}>
+
+                                <h4>{day.date}</h4>
+                                <p>{day.description}</p>
+                                <img src={`https://openweathermap.org/img/wn/${day.icon}@2x.png`}
+                                alt={day.icon}/>
+                                <p>{day.temp}°C (feels like: {day.feels_like}°C)</p>
+                                <p>Min {day.minTemp}°C / Max {day.maxTemp}°C</p>
+                                <p>Humidity: {day.humidity}</p>
+                                <p>Wind: {day.wind}</p>
+                                <p>Pressure: {day.pressure}</p>
+                                <p>Visibility: {day.visibility}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

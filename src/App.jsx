@@ -9,12 +9,14 @@ function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
   const [error, setError] = useState('');
+  const [showDetails, setShowDetails] = useState(false);
 
 
   const handleSearch = () => {
     setError('');
     setCurrentWeather(null);
     setForecast(null);
+    setShowDetails(false);
     fetchCurrentWeather();
     fetchForecast();
   }
@@ -85,7 +87,7 @@ function App() {
   }
 
 
-  const currentWeatherBackground = (description) => {
+  const getWeatherBackground = (description) => {
     if (!description) return 'linear-gradient(135deg, #ece9e6, #ffffff)';
 
     const desc = description.toLowerCase();
@@ -119,7 +121,7 @@ function App() {
   
   return (
     <div className='app-container'
-    style={{background: currentWeatherBackground(currentWeather?.weather?.[0]?.description)}}>
+    style={{background: getWeatherBackground(currentWeather?.weather?.[0]?.description)}}>
 
       <div className='search-container'>
         <input type="text"
@@ -144,7 +146,11 @@ function App() {
         <main className='weather-card'>
           {currentWeather && <CurrentWeather data={currentWeather}/>}
 
-          {forecast && <Forecast data={forecast}/>}
+          {forecast && <Forecast 
+          data={forecast}
+          showDetails={showDetails}
+          setShowDetails={setShowDetails}
+          getWeatherBackground={getWeatherBackground}/>}
         </main>
       </div>  
 
