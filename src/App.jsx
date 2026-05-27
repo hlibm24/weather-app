@@ -10,16 +10,38 @@ function App() {
   const [forecast, setForecast] = useState(null);
   const [error, setError] = useState('');
   const [showDetails, setShowDetails] = useState(false);
+  const [favorites, setFavorites] = useState([]);
 
+  // fav list code
+  const addToFavs = (cityName) => {
+    if (cityName && !favorites.includes(cityName)) {
+      const newFavorites = [...favorites, cityName];
+      setFavorites(newFavorites);
+      localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    };
+  };
 
-  const handleSearch = () => {
+  useEffect(()=> {
+    const stored = localStorage.getItem('favorites');
+    if(stored) {
+      setFavorites(JSON.parse(stored));
+    };
+  }, []);
+
+  const handleFavSearch = (cityName) => {
+    setCity(cityName);
+    handleSearch(cityName);
+  };
+  //
+
+  const handleSearch = (cityName = city) => {
     setError('');
     setCurrentWeather(null);
     setForecast(null);
     setShowDetails(false);
-    fetchCurrentWeather();
-    fetchForecast();
-  }
+    fetchCurrentWeather(cityName);
+    fetchForecast(cityName);
+  };
 
   const inputRef = useRef(null);
   useEffect(()=> {
@@ -40,20 +62,20 @@ function App() {
           throw new Error('Server issues, try later.');
       }
     }
-  }
+  };
 
-  const fetchCurrentWeather = async() => {
-    if(!city) return;
+  const fetchCurrentWeather = async(cityName) => {
+    if(!cityName) return;
 
     if(!navigator.onLine) {
       setError('No internet connection.');
       return;
-    }
+    };
 
     const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
     try {
-      const response = await fetch (`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`)
+      const response = await fetch (`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`)
       handleApiErrors(response);
       const data = await response.json();
       setCurrentWeather(data);
@@ -64,8 +86,8 @@ function App() {
     }
   }
 
-  const fetchForecast = async () => {
-    if(!city) return;
+  const fetchForecast = async (cityName) => {
+    if(!cityName) return;
 
     if(!navigator.onLine) {
       setError('No internet connection.');
@@ -75,7 +97,7 @@ function App() {
     const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
     
     try {
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`);
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${apiKey}`);
       handleApiErrors(response);
       const data = await response.json();
       setForecast(data);
@@ -118,7 +140,7 @@ function App() {
     return 'linear-gradient(135deg, #ece9e6, #ffffff)';
   };
 
-  
+
   return (
     <div className='app-container'
     style={{background: getWeatherBackground(currentWeather?.weather?.[0]?.description)}}>
@@ -140,11 +162,16 @@ function App() {
       <div className='main-container'>
         <aside className='side-bar'>
           <ul className='favorites'>
-
+            {favorites.map(favCity =>(
+              <li key={favCity} onClick={() => handleFavSearch(favCity)}>
+                {favCity}</li>
+            ))}
           </ul>
         </aside>
         <main className='weather-card'>
-          {currentWeather && <CurrentWeather data={currentWeather}/>}
+          {currentWeather && <CurrentWeather
+           data={currentWeather}
+           onAddFavorite={addToFavs}/>}
 
           {forecast && <Forecast 
           data={forecast}
