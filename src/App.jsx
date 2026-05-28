@@ -32,6 +32,12 @@ function App() {
     setCity(cityName);
     handleSearch(cityName);
   };
+
+  const removeFromFavList = (cityName) => {
+    const updatedFavList = favorites.filter(city => city !== cityName);
+    setFavorites(updatedFavList);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavList));
+  }
   //
 
   const handleSearch = (cityName = city) => {
@@ -163,8 +169,10 @@ function App() {
         <aside className='side-bar'>
           <ul className='favorites'>
             {favorites.map(favCity =>(
-              <li key={favCity} onClick={() => handleFavSearch(favCity)}>
-                {favCity}</li>
+              <li key={favCity}>
+                <span onClick={() => handleFavSearch(favCity)}>{favCity}</span>
+                <button onClick={() => removeFromFavList(favCity)}>Delete</button>
+              </li>
             ))}
           </ul>
         </aside>
