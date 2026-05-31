@@ -6,9 +6,8 @@ function CurrentWeather({data, onAddFavorite}) {
 
     return (
         <div className="currentWeather" >
-            <button onClick={() => {
-                console.log('Добавляем город:', data.name);
-                onAddFavorite(data.name)}}>Star</button>
+            <button className="addToFavs-btn"
+            onClick={() => onAddFavorite(data.name)}>Add to favorites</button>
             <div className="main-info">
                 <p>{data.name}</p>
                 <img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}

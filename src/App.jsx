@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import CurrentWeather from './components/CurrentWeather';
 import Forecast from './components/Forecast';
-// import './App.css'
+import './App.css'
 
 function App() {
 
@@ -152,31 +152,43 @@ function App() {
     style={{background: getWeatherBackground(currentWeather?.weather?.[0]?.description)}}>
 
       <div className='search-container'>
-        <input type="text"
+        <input className='search-input'
+        type="text"
         placeholder='Enter city...'
         ref={inputRef}
         value={city}
         onChange={(e)=> setCity(e.target.value)}
         onKeyDown={(e)=> e.key === 'Enter' && handleSearch()}
         />
-        <button onClick={handleSearch}>Search</button>
+        <button className='search-button'
+        onClick={handleSearch}>Search</button>
       </div>
-      {error && 
-      <div className='error-message'>{error}</div>
-      }
       
       <div className='main-container'>
         <aside className='side-bar'>
-          <ul className='favorites'>
-            {favorites.map(favCity =>(
-              <li key={favCity}>
-                <span onClick={() => handleFavSearch(favCity)}>{favCity}</span>
-                <button onClick={() => removeFromFavList(favCity)}>Delete</button>
-              </li>
-            ))}
-          </ul>
+          <h3 className='favCities-title'>Favorite cities:</h3>
+          {favorites.length === 0 ? (
+            <p>Your list is empty</p>
+          ) : (
+            <ul className='favorites'>
+              {favorites.map(favCity =>(
+                <li className='fav-city'
+                key={favCity}>
+                  <span onClick={() => handleFavSearch(favCity)}>{favCity}</span>
+                  <button onClick={() => removeFromFavList(favCity)}>X</button>
+                </li>
+              ))}
+            </ul>
+          )}
+          
         </aside>
         <main className='weather-card'>
+          {error && 
+            <div className='error-message'>{error}</div>
+          }
+          {!currentWeather && !forecast && (
+            <p className='placeholder'>Search for a city to see the weather</p>
+          )}
           {currentWeather && <CurrentWeather
            data={currentWeather}
            onAddFavorite={addToFavs}/>}
