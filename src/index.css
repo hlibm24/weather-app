@@ -55,6 +55,14 @@ html, body, #root {
   height: 100%;
 }
 
+html {
+  height: auto;
+}
+
+body {
+  font-size: 22px;
+}
+
 #root {
   max-width: 100%;
   margin: 0 auto;

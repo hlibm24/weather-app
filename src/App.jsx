@@ -120,28 +120,29 @@ function App() {
 
     const desc = description.toLowerCase();
 
-    if (desc.includes('clear')) return 'linear-gradient(135deg, #f5f7fa, #c3cfe2)';
+    if (desc.includes('clear')) return 'linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)';
 
-    if (desc.includes('few clouds')) return 'linear-gradient(135deg, #e0eafc, #cfdef3)';
-    if (desc.includes('scattered clouds')) return 'linear-gradient(135deg, #d3cce3, #e9e4f0)';
-    if (desc.includes('broken clouds')) return 'linear-gradient(135deg, #bdc3c7, #2c3e50)';
-    if (desc.includes('overcast clouds')) return 'linear-gradient(135deg, #616161, #9bc5c3)';
+     if (desc.includes('few clouds')) return 'linear-gradient(135deg, #d3cce3, #e9e4f0)';
+    if (desc.includes('scattered clouds')) return 'linear-gradient(135deg, #bdc3c7, #2c3e50)';
+    if (desc.includes('broken clouds')) return 'linear-gradient(135deg, #616161, #9bc5c3)';
+    if (desc.includes('overcast clouds')) return 'linear-gradient(135deg, #2b5876, #4e4376)';
 
     if (desc.includes('light rain')) return 'linear-gradient(135deg, #7f9fbf, #4b79a1)';
-    if (desc.includes('moderate rain')) return 'linear-gradient(135deg, #4b79a1, #283e51)';
+    if (desc.includes('moderate rain') || desc.includes('rain')) return 'linear-gradient(135deg, #4b79a1, #283e51)';
     if (desc.includes('heavy')) return 'linear-gradient(135deg, #1e3c72, #2a5298)';
     if (desc.includes('rain')) return 'linear-gradient(135deg, #4b79a1, #283e51)';
 
     if (desc.includes('drizzle')) return 'linear-gradient(135deg, #8e9eab, #eef2f3)';
 
-    if (desc.includes('thunderstorm')) return 'linear-gradient(135deg, #232526, #414345)';
+     if (desc.includes('thunderstorm')) return 'linear-gradient(135deg, #232526, #414345)';
 
-    if (desc.includes('light snow')) return 'linear-gradient(135deg, #e6e9f0, #eef2f5)';
+
     if (desc.includes('snow')) return 'linear-gradient(135deg, #d9e2e8, #aebbc3)';
+    if (desc.includes('light snow') || desc.includes('snow')) return 'linear-gradient(135deg, #e6e9f0, #eef2f5)';
     if (desc.includes('heavy snow')) return 'linear-gradient(135deg, #b0c4de, #708090)';
     if (desc.includes('sleet')) return 'linear-gradient(135deg, #bdc3c7, #2c3e50)';
 
-    if (desc.includes('mist') || desc.includes('fog') || desc.includes('haze')) return 'linear-gradient(135deg, #c9d6df, #b3c7d4)';
+     if (desc.includes('mist') || desc.includes('fog') || desc.includes('haze')) return 'linear-gradient(135deg, #c9d6df, #b3c7d4)';
 
     return 'linear-gradient(135deg, #ece9e6, #ffffff)';
   };

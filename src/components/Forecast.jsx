@@ -35,7 +35,7 @@ function Forecast ({data, showDetails, setShowDetails, getWeatherBackground}) {
         let details = middayForecast || day[0];
         
         return {
-            date: day[0].dt_txt.split(' ')[0],
+            date: day[0].dt_txt.split(' ')[0].split('-').reverse().join('.'),
             minTemp: Math.round(minTemp),
             maxTemp: Math.round(maxTemp),
             icon: details.weather[0].icon,
@@ -58,7 +58,7 @@ function Forecast ({data, showDetails, setShowDetails, getWeatherBackground}) {
                         <p>{day.date}</p>
                         <img src={`https://openweathermap.org/img/wn/${day.icon}@2x.png`}
                         alt={day.icon}/>
-                        <p>{day.minTemp} / {day.maxTemp}</p>
+                        <p>{day.minTemp} °C / {day.maxTemp} °C</p>
                     </li>
                 ))}    
             </ul>
