@@ -1,4 +1,3 @@
-import {useState} from 'react';
 
 function Forecast ({data, showDetails, setShowDetails, getWeatherBackground}) {
     if(!data) return null;

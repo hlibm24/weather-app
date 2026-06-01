@@ -91,6 +91,7 @@
   background: none;
   cursor: pointer;
   color: #6c757d;
+  padding: 2px 3px;
 }
 
 .fav-city button:hover {
@@ -206,34 +207,54 @@
 
 .modal-overlay {
   position: fixed;
+  background: rgba(0, 0, 0, 0.7);
   z-index: 100;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  overflow-y: auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .modal-content {
-  background-color: white;
+  border-radius: 24px;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   display: flex;
   justify-content: flex-start;
+  overflow-y: auto;
 }
 
 .detail-card {
-  flex: 1;
   min-width: 180px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 1;
+  padding-top: 50px;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.detail-card:last-child {
+  border-right: none;
+}
+
+.detail-card img {
+  width: 100px;
+  height: auto;
+  align-self: center;
 }
 
 .close-details {
   position: absolute;
   z-index: 20;
-  top: 20px;
-  right: 20px;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 2px 3px;
 }

@@ -174,6 +174,7 @@ function App() {
             <ul className='favorites'>
               {favorites.map(favCity =>(
                 <li className='fav-city'
+                onClick={() => handleFavSearch(favCity)}
                 key={favCity}>
                   <span onClick={() => handleFavSearch(favCity)}>{favCity}</span>
                   <button onClick={() => removeFromFavList(favCity)}>X</button>
