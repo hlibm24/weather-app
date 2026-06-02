@@ -132,13 +132,8 @@
   right: 10px;
   border: none;
   background: none;
-  color: blue;
   cursor: pointer;
   padding: 0 3px;
-}
-
-.addToFavs-btn:hover {
-  border-bottom: 1px solid #0077cc;
 }
 
 .main-info, .addit-info {
@@ -257,4 +252,132 @@
   background: none;
   cursor: pointer;
   padding: 2px 3px;
+}
+
+@media (max-width: 1366px) {
+  .side-bar {
+    width: 240px;
+    padding: 0 10px;
+    font-size: 18px;
+  }
+
+  .favCities-title {
+    font-size: 16px;
+    margin: 25px 0 15px;
+  }
+
+  .fav-city {
+    padding: 4px;
+  }
+
+  .currentWeather {
+    padding: 40px 0 70px;
+    gap: 14px;
+  }
+
+  .main-info, .addit-info {
+    padding: 10px;
+  }
+
+  .main-info img {
+    width: 70px;
+  }
+
+  .forecast-list {
+    gap: 10px;
+    padding-bottom: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .forecast-item {
+    padding: 7px 4px;
+    gap: 2px;
+  }
+
+  .forecast-item img {
+    width: 60px;
+  }
+
+  .modal-content {
+    flex-direction: column;
+  }
+
+  .detail-card {
+    min-width: 100%;
+    padding-bottom: 15px;
+  }
+
+  .close-details {
+    right: 35px;
+  }
+  
+}
+
+@media (max-width: 768px) {
+  .search-container {
+    padding: 10px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .search-input {
+    padding: 12px 10px;
+  }
+  
+  .search-button {
+    padding: 12px 10px;
+  }
+
+  .main-container {
+    flex-direction: column;
+  }
+
+  .side-bar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid black;
+    padding: 15px;
+  }
+
+  .placeholder {
+    padding: 30px 20px;
+    font-size: 18px;
+  }
+
+  .error-message {
+    font-size: 16px;
+    margin: 15px;
+    text-align: center;
+  }
+
+  .currentWeather {
+    flex-direction: column;
+    gap: 20px;
+    padding: 60px 20px 20px 20px;
+  }
+
+  .main-info, .addit-info {
+    padding: 15px;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .forecast-list {
+    gap: 15px;
+    padding: 15px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .forecast-item {
+    padding: 15px 8px;
+  }
+  
+  .modal-content {
+    padding: 60px 15px 30px;;
+  }
+
+  .detail-card {
+    text-align: center;
+  }
 }
