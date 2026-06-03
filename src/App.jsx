@@ -122,7 +122,7 @@ function App() {
 
     if (desc.includes('clear')) return 'linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)';
 
-     if (desc.includes('few clouds')) return 'linear-gradient(135deg, #d3cce3, #e9e4f0)';
+    if (desc.includes('few clouds')) return 'linear-gradient(135deg, #d3cce3, #e9e4f0)';
     if (desc.includes('scattered clouds')) return 'linear-gradient(135deg, #bdc3c7, #2c3e50)';
     if (desc.includes('broken clouds')) return 'linear-gradient(135deg, #616161, #9bc5c3)';
     if (desc.includes('overcast clouds')) return 'linear-gradient(135deg, #2b5876, #4e4376)';
@@ -134,7 +134,7 @@ function App() {
 
     if (desc.includes('drizzle')) return 'linear-gradient(135deg, #8e9eab, #eef2f3)';
 
-     if (desc.includes('thunderstorm')) return 'linear-gradient(135deg, #232526, #414345)';
+    if (desc.includes('thunderstorm')) return 'linear-gradient(135deg, #232526, #414345)';
 
 
     if (desc.includes('snow')) return 'linear-gradient(135deg, #d9e2e8, #aebbc3)';
@@ -142,7 +142,7 @@ function App() {
     if (desc.includes('heavy snow')) return 'linear-gradient(135deg, #b0c4de, #708090)';
     if (desc.includes('sleet')) return 'linear-gradient(135deg, #bdc3c7, #2c3e50)';
 
-     if (desc.includes('mist') || desc.includes('fog') || desc.includes('haze')) return 'linear-gradient(135deg, #c9d6df, #b3c7d4)';
+    if (desc.includes('mist') || desc.includes('fog') || desc.includes('haze')) return 'linear-gradient(135deg, #c9d6df, #b3c7d4)';
 
     return 'linear-gradient(135deg, #ece9e6, #ffffff)';
   };
@@ -162,7 +162,7 @@ function App() {
         onKeyDown={(e)=> e.key === 'Enter' && handleSearch()}
         />
         <button className='search-button'
-        onClick={handleSearch}>Search</button>
+        onClick={() => handleSearch()}>Search</button>
       </div>
       
       <div className='main-container'>
