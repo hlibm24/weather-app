@@ -12,7 +12,7 @@ function App() {
   const [showDetails, setShowDetails] = useState(false);
   const [favorites, setFavorites] = useState([]);
 
-  // fav list code
+
   const addToFavs = (cityName) => {
     if (cityName && !favorites.includes(cityName)) {
       const newFavorites = [...favorites, cityName];
@@ -38,7 +38,7 @@ function App() {
     setFavorites(updatedFavList);
     localStorage.setItem('favorites', JSON.stringify(updatedFavList));
   }
-  //
+
 
   const handleSearch = (cityName = city) => {
     setError('');
