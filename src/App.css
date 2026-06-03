@@ -94,8 +94,10 @@
   padding: 2px 3px;
 }
 
-.fav-city button:hover {
+@media(hover: hover) {
+  .fav-city button:hover {
   color: #dc3545;
+}
 }
 
 /* Weather card */
@@ -128,8 +130,8 @@
 .addToFavs-btn {
   position: absolute;
   z-index: 10;
-  top: 10px;
-  right: 10px;
+  top: 20px;
+  right: 20px;
   border: none;
   background: none;
   cursor: pointer;
@@ -276,7 +278,7 @@
   }
 
   .currentWeather {
-    padding: 40px 0 70px;
+    padding: 60px 0 70px;
     gap: 14px;
   }
 
@@ -290,7 +292,6 @@
 
   .forecast-list {
     gap: 10px;
-    padding-bottom: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
@@ -316,7 +317,6 @@
   .close-details {
     right: 35px;
   }
-  
 }
 
 @media (max-width: 768px) {
@@ -359,7 +359,7 @@
   .currentWeather {
     flex-direction: column;
     gap: 20px;
-    padding: 60px 20px 20px 20px;
+    padding: 60px 20px 40px 20px;
   }
 
   .main-info, .addit-info {
@@ -370,7 +370,7 @@
 
   .forecast-list {
     gap: 15px;
-    padding: 15px;
+    padding: 15px 15px 35px 15px;
     grid-template-columns: repeat(2, 1fr);
   }
 
