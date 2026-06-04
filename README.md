@@ -1,7 +1,7 @@
 ## Weather App
 
     ![Desktop version](screenshots/desktop-screenshot.png)
-    ![Mobile version](screenshots/phone-screnshot.jpg)
+    ![Mobile version](screenshots/phone-screenshot.jpg)
 
 ## About project
 A weather app written in React. It shows the current weather and a 5-day forecast. You can add cities to a favorites list, and they are saved using localStorage. The project is adaptive and works on phones and computers.
