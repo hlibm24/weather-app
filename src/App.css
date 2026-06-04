@@ -81,9 +81,11 @@
   flex: 1;
 }
 
-.fav-city:hover {
+@media(hover: hover) {
+  .fav-city:hover {
   background: #e9ecef;
   border-radius: 8px;
+}
 }
 
 .fav-city button {
@@ -130,7 +132,7 @@
 .addToFavs-btn {
   position: absolute;
   z-index: 10;
-  top: 20px;
+  top: 30px;
   right: 20px;
   border: none;
   background: none;
@@ -274,11 +276,11 @@
   }
 
   .fav-city {
-    padding: 4px;
+    padding: 8px;
   }
 
   .currentWeather {
-    padding: 60px 0 70px;
+    padding: 80px 0 70px;
     gap: 14px;
   }
 
@@ -359,7 +361,7 @@
   .currentWeather {
     flex-direction: column;
     gap: 20px;
-    padding: 60px 20px 40px 20px;
+    padding: 80px 20px 40px 20px;
   }
 
   .main-info, .addit-info {

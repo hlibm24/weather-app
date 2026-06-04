@@ -81,10 +81,10 @@ function Forecast ({data, showDetails, setShowDetails, getWeatherBackground}) {
                                 alt={day.icon}/>
                                 <p>{day.temp}°C (feels like: {day.feels_like}°C)</p>
                                 <p>Min {day.minTemp}°C / Max {day.maxTemp}°C</p>
-                                <p>Humidity: {day.humidity}</p>
-                                <p>Wind: {day.wind}</p>
-                                <p>Pressure: {day.pressure}</p>
-                                <p>Visibility: {day.visibility}</p>
+                                <p>Humidity: {day.humidity}%</p>
+                                <p>Wind: {day.wind} m/s</p>
+                                <p>Visibility: {(day.visibility / 1000)} km</p>
+                                <p>Pressure: {day.pressure} hPa</p>
                             </div>
                         ))}
                     </div>
