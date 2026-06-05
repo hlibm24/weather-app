@@ -10,23 +10,21 @@ function App() {
   const [forecast, setForecast] = useState(null);
   const [error, setError] = useState('');
   const [showDetails, setShowDetails] = useState(false);
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(()=> {
+    const stored = localStorage.getItem('favorites');
+    return stored ? JSON.parse(stored) : [];
+  });
 
 
   const addToFavs = (cityName) => {
     if (cityName && !favorites.includes(cityName)) {
-      const newFavorites = [...favorites, cityName];
-      setFavorites(newFavorites);
-      localStorage.setItem('favorites', JSON.stringify(newFavorites));
+      setFavorites(prev=> [prev, cityName]);
     };
   };
 
   useEffect(()=> {
-    const stored = localStorage.getItem('favorites');
-    if(stored) {
-      setFavorites(JSON.parse(stored));
-    };
-  }, []);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
 
   const handleFavSearch = (cityName) => {
     setCity(cityName);
