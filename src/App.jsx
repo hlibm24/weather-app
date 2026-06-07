@@ -38,7 +38,7 @@ function App() {
   }
 
 
-  const handleSearch = (cityName = city) => {
+  const handleSearch = (cityName = city.trim()) => {
     setError('');
     setCurrentWeather(null);
     setForecast(null);
