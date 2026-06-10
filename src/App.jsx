@@ -18,7 +18,7 @@ function App() {
 
   const addToFavs = (cityName) => {
     if (cityName && !favorites.includes(cityName)) {
-      setFavorites(prev=> [prev, cityName]);
+      setFavorites(prev=> [...prev, cityName]);
     };
   };
 
