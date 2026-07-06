@@ -44,7 +44,7 @@ function Forecast ({data, showDetails, setShowDetails, getWeatherBackground}) {
             humidity: details.main.humidity,
             wind: details.wind.speed.toFixed(1),
             pressure: details.main.pressure,
-            visibility: (details.visibility / 1000).toFixed(1),
+            visibility: details.visibility / 1000,
         };
     })
     
@@ -83,7 +83,7 @@ function Forecast ({data, showDetails, setShowDetails, getWeatherBackground}) {
                                 <p>Min {day.minTemp}°C / Max {day.maxTemp}°C</p>
                                 <p>Humidity: {day.humidity}%</p>
                                 <p>Wind: {day.wind} m/s</p>
-                                <p>Visibility: {(day.visibility / 1000)} km</p>
+                                <p>Visibility: {day.visibility} km</p>
                                 <p>Pressure: {day.pressure} hPa</p>
                             </div>
                         ))}
